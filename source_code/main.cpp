@@ -5,8 +5,6 @@ int main(int argc, char* argv[])
 	cv::Mat img = cv::imread(argv[1]);
 	cv::Mat gray_img(img.rows, img.cols, CV_8UC1);
 
-	std::cout << img.rows * img.cols << std::endl;
-
 	for (int i = 0; i < img.rows; i++) {
 		for (int j = 0; j < img.cols; j++) {
 			
@@ -26,6 +24,8 @@ int main(int argc, char* argv[])
 	cv::namedWindow("image", cv::WINDOW_NORMAL);
 	cv::imshow("image", gray_img);
 	cv::waitKey(0);
+
+	cv::imwrite(argv[2], gray_img);
 
 	return 0;
 }
