@@ -14,12 +14,16 @@ Source of image : http://picascii.com/
 
 2) Convert RGB image to binary image - DONE
 
-3) **REFACTORIZARION OF DONE WORK - Multithread programming and class organization**
+3) **REFACTORIZATION OF DONE WORK - Multithread programming and class organization**
 
 4) Convert binary image to ASCII - Main Problem :
    * Think how to adjust sizes of glyps ?
    * How to generate text on image ?
    * How to convert ASCII which are numbered from 33 to 127 - I am not considering those ASCII values which represents particular keys
    * Probably much more...
-  
-5) Extending application to allow filtering videos in MP4 format in release 2.0
+   
+5) **REFACTORIZATION**
+
+6) Release 1.0
+
+7) Extending application to allow filtering videos in MP4 format in release 2.0
