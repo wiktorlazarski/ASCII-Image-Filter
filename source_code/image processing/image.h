@@ -23,6 +23,11 @@ public:
 		return *this;
 	}
 
+	//raw data
+	inline cv::Mat raw_data() const { 
+		return m_data.clone();
+	}
+
 	//image parameters
 	int rows() const noexcept { return m_data.rows; }
 	int cols() const noexcept { return m_data.cols; }

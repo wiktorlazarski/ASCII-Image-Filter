@@ -1,5 +1,6 @@
 #include "image processing/rgb_image.h"
 #include "image processing/grayscale_image.h"
+#include <iostream>
 
 int main(int argc, char* argv[])
 {
@@ -22,12 +23,12 @@ int main(int argc, char* argv[])
 		}
 	}
 
-	// Writing and printing image on window
-	//cv::namedWindow("grayscaled image", cv::WINDOW_NORMAL);
-	//cv::imshow("grayscaled image", gray_img.m_data);
-	//cv::waitKey(0);
+	cv::Mat raw_img = gray_img.raw_data();
+	cv::namedWindow("grayscaled image", cv::WINDOW_NORMAL);
+	cv::imshow("grayscaled image", raw_img);
+	cv::waitKey(0);
 
-	//cv::imwrite(argv[2], gray_img);
+	cv::imwrite(argv[2], raw_img);
 
 	return 0;
 }
