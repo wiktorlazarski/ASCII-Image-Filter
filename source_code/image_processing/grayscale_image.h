@@ -14,6 +14,10 @@ public:
 	GrayscaleImage(const GrayscaleImage& img) = default;
 	GrayscaleImage(GrayscaleImage&& img) = default;
 
+	//assign operators
+	GrayscaleImage& operator=(const GrayscaleImage&) = default;
+	GrayscaleImage& operator=(GrayscaleImage&&) = default;
+
 	//element access
 	pixel_type& pixel_at(const int& x, const int& y) {
 		return Image::pixel_at<pixel_type>(x, y);

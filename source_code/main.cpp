@@ -1,5 +1,5 @@
-#include "image processing/rgb_image.h"
-#include "image processing/grayscale_image.h"
+#include "image_processing/rgb_image.h"
+#include "image_processing/grayscale_image.h"
 #include <iostream>
 
 int main(int argc, char* argv[])

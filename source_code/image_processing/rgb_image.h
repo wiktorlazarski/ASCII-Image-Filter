@@ -14,6 +14,10 @@ public:
 	RGBImage(const RGBImage& img) = default;
 	RGBImage(RGBImage&& img) = default;
 
+	//assign operators
+	RGBImage& operator=(const RGBImage&) = default;
+	RGBImage& operator=(RGBImage&&) = default;
+
 	//element access
 	pixel_type& pixel_at(const int& x, const int& y) {
 		return Image::pixel_at<pixel_type>(x, y);
