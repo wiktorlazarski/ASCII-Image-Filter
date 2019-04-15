@@ -21,8 +21,8 @@ int main(int argc, char* argv[])
 		}
 	}
 
-	cv::namedWindow("image", cv::WINDOW_NORMAL);
-	cv::imshow("image", gray_img);
+	cv::namedWindow("grayscaled image", cv::WINDOW_NORMAL);
+	cv::imshow("grayscaled image", gray_img);
 	cv::waitKey(0);
 
 	cv::imwrite(argv[2], gray_img);
