@@ -1,29 +1,16 @@
+#include <iostream>
+#include <memory>
+
 #include "image_processing/rgb_image.h"
 #include "image_processing/grayscale_image.h"
-#include <iostream>
+#include "image_processing/rgb_converter.h"
 
 int main(int argc, char* argv[])
 {
-	const RGBImage img(argv[1]);
-	GrayscaleImage gray_img(img.rows(), img.cols());
+	const RGBImage in_img(argv[1]);
+	std::unique_ptr<GrayscaleImage> gray_img(RGBConverter::get_instance().convert(in_img));
 
-	for (int i = 0; i < img.rows(); i++) {
-		for (int j = 0; j < img.cols(); j++) {
-			
-			auto p_intensity = img.pixel_at(j, i);
-
-			int blue = p_intensity[0];
-			int green = p_intensity[1];
-			int red = p_intensity[2];
-			
-			int luminance = static_cast<int>(0.2126f * red + 0.7152f * green + 0.0722f * blue);
-
-			//convert to grayscale
-			gray_img.pixel_at(j, i) = luminance;
-		}
-	}
-
-	cv::Mat raw_img = gray_img.raw_data();
+	cv::Mat raw_img = gray_img->raw_data();
 	cv::namedWindow("grayscaled image", cv::WINDOW_NORMAL);
 	cv::imshow("grayscaled image", raw_img);
 	cv::waitKey(0);
