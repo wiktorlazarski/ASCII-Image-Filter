@@ -9,7 +9,6 @@
 class RGBToGrayscale final : public IImageConverter<RGBImage, GrayscaleImage>
 {
 public:
-
 	static RGBToGrayscale& get_instance() {
 		static RGBToGrayscale instance;
 		return instance;
@@ -32,6 +31,6 @@ private:
 	RGBToGrayscale& operator=(RGBToGrayscale&&) = delete;
 
 	//parallel conversion
-	void convert_pixels(GrayscaleImage* output, const RGBImage& rgb, int low_row, int high_row) const;
+	void convert_pixels(GrayscaleImage* output, const RGBImage& rgb, int high_row, int low_row) const;
 	void p_convert(GrayscaleImage* output, const RGBImage& rgb) const;
 };
