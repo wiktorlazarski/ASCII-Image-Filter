@@ -24,11 +24,10 @@ void RGBToGrayscale::convert_pixels(GrayscaleImage* output, const RGBImage& rgb,
 			output->pixel_at(j, i) = luminance;
 		}
 	}
-
 }
 
 void RGBToGrayscale::p_convert(GrayscaleImage* output, const RGBImage& rgb) const {
-	static constexpr int GRAIN = 600;
+	static constexpr int GRAIN = 200;
 
 	std::vector<std::future<void>> pool;
 
@@ -41,6 +40,7 @@ void RGBToGrayscale::p_convert(GrayscaleImage* output, const RGBImage& rgb) cons
 		}
 	}
 
+	//waits untill all threads finish
 	for (uint i = 0; i < pool.size(); i++) {
 		pool[i].get();
 	}
