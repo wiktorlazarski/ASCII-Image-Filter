@@ -14,7 +14,7 @@ Source of image : http://picascii.com/
 
 2) Convert RGB image to binary image - DONE
 
-3) **REFACTORIZATION OF DONE WORK - Multithread programming and class organization**
+3) **REFACTORIZATION OF DONE WORK - Multithread programming and class organization** - DONE
 
 4) Convert binary image to ASCII - Main Problem :
    * Think how to adjust sizes of glyps ?
