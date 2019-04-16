@@ -15,7 +15,7 @@ public:
 	IImageConverter& operator=(IImageConverter&&) = default;
 
 	//convert method
-	virtual std::unique_ptr<OutputImage> convert(const InputImage&) = 0;
+	virtual std::unique_ptr<OutputImage> convert(const InputImage&) const = 0;
 
 	//destructor
 	virtual ~IImageConverter() = default;
