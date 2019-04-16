@@ -1,4 +1,5 @@
 #pragma once
+#include <fstream>
 #include <opencv2/opencv.hpp>
 
 class Image
@@ -7,7 +8,7 @@ class Image
 
 public:
 	//constructors
-	explicit Image(const std::string& path) { m_data = cv::imread(path); }
+	explicit Image(const std::string& fpath) { m_data = cv::imread(fpath); }
 	explicit Image(int rows, int cols, int type) : m_data(rows, cols, type)
 	{}
 	Image(const Image& img) { *this = img; }
@@ -16,6 +17,10 @@ public:
 	//assign operators
 	Image& operator=(const Image& rhs);
 	Image& operator=(Image&& rhs);
+
+	//output
+	void fwrite(const std::string& fpath) const { cv::imwrite(fpath, m_data); }
+	void display(const std::string& wnd_name, int cv_flag = cv::WINDOW_NORMAL) const;
 
 	//raw data
 	inline cv::Mat raw_data() const { return m_data.clone(); }
@@ -35,5 +40,4 @@ protected:
 	
 	template<typename RetType>
 	const RetType& pixel_at(int x, int j) const { return m_data.at<RetType>(x, j); }
-
 };

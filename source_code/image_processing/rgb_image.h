@@ -7,7 +7,7 @@ public:
 	using pixel_type = cv::Vec3b;
 
 	//constructors
-	explicit RGBImage(const std::string& path) : Image(path)
+	explicit RGBImage(const std::string& fpath) : Image(fpath)
 	{}
 	explicit RGBImage(int rows, int cols, int type) : Image(rows, cols, type)
 	{}

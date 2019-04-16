@@ -10,12 +10,9 @@ int main(int argc, char* argv[])
 	const RGBImage input_img(argv[1]);
 	std::unique_ptr<GrayscaleImage> gray_img(RGBToGrayscale::get_instance().convert(input_img));
 
-	cv::Mat raw_img = gray_img->raw_data();
-	cv::namedWindow("grayscaled image", cv::WINDOW_NORMAL);
-	cv::imshow("grayscaled image", raw_img);
-	cv::waitKey(0);
-
-	cv::imwrite(argv[2], raw_img);
+	input_img.display("RGB Image");
+	gray_img->display("Grayscale Image");
+	gray_img->fwrite(argv[2]);
 
 	return 0;
 }
