@@ -14,14 +14,8 @@ public:
 	Image(Image&& img) { *this = img; }
 
 	//assign operators
-	Image& operator=(const Image& rhs) {
-		m_data = rhs.m_data.clone();
-		return *this;
-	}
-	Image& operator=(Image&& rhs) {
-		m_data = std::move(rhs.m_data);
-		return *this;
-	}
+	Image& operator=(const Image& rhs);
+	Image& operator=(Image&& rhs);
 
 	//raw data
 	inline cv::Mat raw_data() const { return m_data.clone(); }

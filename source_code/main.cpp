@@ -7,8 +7,8 @@
 
 int main(int argc, char* argv[])
 {
-	const RGBImage in_img(argv[1]);
-	std::unique_ptr<GrayscaleImage> gray_img(RGBConverter::get_instance().convert(in_img));
+	const RGBImage input_img(argv[1]);
+	std::unique_ptr<GrayscaleImage> gray_img(RGBConverter::get_instance().convert(input_img));
 
 	cv::Mat raw_img = gray_img->raw_data();
 	cv::namedWindow("grayscaled image", cv::WINDOW_NORMAL);
