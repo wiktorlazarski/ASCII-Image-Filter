@@ -8,7 +8,7 @@ class Image
 public:
 	//constructors
 	explicit Image(const std::string& path) { m_data = cv::imread(path); }
-	explicit Image(const int& rows, const int& cols, const int& type) : m_data(rows, cols, type)
+	explicit Image(int rows, int cols, int type) : m_data(rows, cols, type)
 	{}
 	Image(const Image& img) { *this = img; }
 	Image(Image&& img) { *this = img; }
@@ -31,9 +31,9 @@ public:
 protected:
 	//pixel data access for subclasses
 	template<typename RetType>
-	RetType& pixel_at(const int& x, const int& j) { return m_data.at<RetType>(x, j); }
+	RetType& pixel_at(int x, int j) { return m_data.at<RetType>(x, j); }
 	
 	template<typename RetType>
-	const RetType& pixel_at(const int& x, const int& j) const { return m_data.at<RetType>(x, j); }
+	const RetType& pixel_at(int x, int j) const { return m_data.at<RetType>(x, j); }
 
 };

@@ -9,7 +9,7 @@ public:
 	//constructors
 	explicit RGBImage(const std::string& path) : Image(path)
 	{}
-	explicit RGBImage(const int& rows, const int& cols, const int& type) : Image(rows, cols, type)
+	explicit RGBImage(int rows, int cols, int type) : Image(rows, cols, type)
 	{}
 	RGBImage(const RGBImage& img) = default;
 	RGBImage(RGBImage&& img) = default;

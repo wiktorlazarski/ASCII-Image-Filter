@@ -9,7 +9,7 @@ public:
 	//constructors
 	explicit GrayscaleImage(const std::string& path) : Image(path)
 	{}
-	explicit GrayscaleImage(const int& rows, const int& cols) : Image(rows, cols, CV_8UC1)
+	explicit GrayscaleImage(int rows, int cols) : Image(rows, cols, CV_8UC1)
 	{}
 	GrayscaleImage(const GrayscaleImage& img) = default;
 	GrayscaleImage(GrayscaleImage&& img) = default;
