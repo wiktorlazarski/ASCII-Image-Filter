@@ -8,8 +8,8 @@
 	return std::move(retv);
 }
 
-void RGBToGrayscale::convert_pixels(GrayscaleImage* output, const RGBImage& rgb, int high_row, int low_row) const {
-	for (int i = high_row; i < low_row; i++) {
+void RGBToGrayscale::convert_pixels(GrayscaleImage* output, const RGBImage& rgb, int low_row, int high_row) const {
+	for (int i = low_row; i < high_row; i++) {
 		for (int j = 0; j < output->cols(); j++) {
 
 			auto p_intensity = rgb.pixel_at(j, i);
