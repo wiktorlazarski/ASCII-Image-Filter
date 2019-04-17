@@ -18,6 +18,11 @@ public:
 	Image& operator=(const Image& rhs);
 	Image& operator=(Image&& rhs);
 
+	//modifiers
+	void put_text(const std::string& text, const cv::Point& left_bottom, cv::HersheyFonts font, double font_size, const cv::Scalar& col) {
+		cv::putText(m_data, text, left_bottom, font, font_size, col);
+	}
+
 	//output
 	void fwrite(const std::string& fpath) const { cv::imwrite(fpath, m_data); }
 	void display(const std::string& wnd_name, int cv_flag = cv::WINDOW_NORMAL) const;
