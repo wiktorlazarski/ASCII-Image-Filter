@@ -12,7 +12,7 @@ void RGBToGrayscale::convert_pixels(GrayscaleImage* output, const RGBImage& rgb,
 	for (int i = low_row; i < high_row; i++) {
 		for (int j = 0; j < output->cols(); j++) {
 
-			auto p_intensity = rgb.pixel_at(j, i);
+			auto p_intensity = rgb.pixel_at(i, j);
 
 			int blue = p_intensity[0];
 			int green = p_intensity[1];
@@ -21,7 +21,7 @@ void RGBToGrayscale::convert_pixels(GrayscaleImage* output, const RGBImage& rgb,
 			int luminance = static_cast<int>(0.2126f * red + 0.7152f * green + 0.0722f * blue);
 
 			//convert to grayscale
-			output->pixel_at(j, i) = luminance;
+			output->pixel_at(i, j) = luminance;
 		}
 	}
 }
