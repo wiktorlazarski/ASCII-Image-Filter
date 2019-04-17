@@ -3,7 +3,7 @@
 [[nodiscard]] std::unique_ptr<GrayscaleImage> RGBToGrayscale::convert(const RGBImage& rgb_img) const {
 	std::unique_ptr<GrayscaleImage> retv(new GrayscaleImage(rgb_img.rows(), rgb_img.cols()));
 
-	p_convert(retv.get(), rgb_img);
+	pconvert(retv.get(), rgb_img);
 
 	return std::move(retv);
 }
@@ -26,7 +26,7 @@ void RGBToGrayscale::convert_pixels(GrayscaleImage* output, const RGBImage& rgb,
 	}
 }
 
-void RGBToGrayscale::p_convert(GrayscaleImage* output, const RGBImage& rgb) const {
+void RGBToGrayscale::pconvert(GrayscaleImage* output, const RGBImage& rgb) const {
 	static constexpr int GRAIN = 200;
 
 	std::vector<std::future<void>> pool;

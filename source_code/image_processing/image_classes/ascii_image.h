@@ -1,4 +1,5 @@
 #pragma once
+#include <future>
 #include "image.h"
 
 class AsciiImage : public Image
@@ -10,19 +11,7 @@ public:
 	using pixel_type = cv::Vec3b;
 
 	//constructors
-	explicit AsciiImage(int rows, int cols) : Image(rows + WATERMARK_SIZE, cols, CV_8UC3)
-	{
-		for (int i = 0; i < this->rows(); i++) {
-			for (int j = 0; j < this->cols(); j++) {
-				//set white background 
-				pixel_at(i, j) = { 255, 255, 255 };
-			}
-		}
-
-		double font_size = rows > cols ? rows / cols : cols / rows;	
-		font_size /= 7;
-		put_text(WATERMARK, cv::Point(0, this->rows() - 5), cv::FONT_HERSHEY_COMPLEX, font_size, cv::Scalar(0, 0, 0));
-	}
+	explicit AsciiImage(int rows, int cols);
 	explicit AsciiImage(const Image& img) : AsciiImage(img.rows(), img.cols()) 
 	{}
 	AsciiImage(const AsciiImage& img) = default;
@@ -42,6 +31,10 @@ public:
 
 	//destructor
 	virtual ~AsciiImage() = default;
-};
 
-const char* AsciiImage::WATERMARK = "Created by ASCII filter";
+private:
+	double font_size;
+
+	void paint_background(int low_row, int high_row);
+	void ppaint_background();
+};

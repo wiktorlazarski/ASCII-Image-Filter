@@ -32,5 +32,5 @@ private:
 
 	//parallel conversion
 	void convert_pixels(GrayscaleImage* output, const RGBImage& rgb, int low_row, int high_row) const;
-	void p_convert(GrayscaleImage* output, const RGBImage& rgb) const;
+	void pconvert(GrayscaleImage* output, const RGBImage& rgb) const;
 };
