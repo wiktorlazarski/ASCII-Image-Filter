@@ -31,4 +31,10 @@ Source of image : http://picascii.com/
 ## SUCCESS - Implementation of algorithm completed successfully <3 :D
 Below you can see one of firstly generated pictures
 
+### Picture of me
+
 ![alt text](https://db3pap002files.storage.live.com/y4mzhPKUmdDUFdaZax9S7mea7Ch4oZyF0LjJvnmRTzZ0D55V7Bbds_FKdZVhoSOXeqSzm6N4GTYx7Pd_awG43tVkz4ejcVxe9cqcW1sI1Z04FJ4KwO9wSM-vP8foVpSfce1OgcHejWFFe_Z4w4VQ8-FrCCjm7MisELiVNGQk_KR5-wLkteJvqaIabrSchDjtBJjnVzz9QQGpTpPcH1jmwtvPQ/output.jpg?psid=1&width=450&height=830)
+
+### Linux penguin
+
+![alt text](https://db3pap002files.storage.live.com/y4m-ULJDckuO1hTzgFcixOdXdejbGFTIF0pLaRSz8JV8QXKh7zOgVPyzd74o9_gHGwNNCtbwjZDg8cxJrqJt7fz0mVbcToafwFc1SYMBLgi0Meu4UXiqmWdZY9mqIPfR4xS-Uv6-hOF-RPgijYuqIA2Z4GNIkrE0YOoZ0NyFLMgs1j4gjyf_aNzXDWGm0NclfNnhgH6qWLUKHqBVup3cVA7YQ/output2.jpg?psid=1&width=580&height=425)
