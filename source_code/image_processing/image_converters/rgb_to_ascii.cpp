@@ -8,7 +8,11 @@
 
 	for (int i = 0; i < gray_img->cols(); i += SUBSPACE_LENGTH) {
 		for (int j = 0; j < gray_img->rows(); j += SUBSPACE_LENGTH) {
-			print_ascii({ i, j }, { i + SUBSPACE_LENGTH, j + SUBSPACE_LENGTH }, rgb_img, *gray_img);
+
+			if (i + SUBSPACE_LENGTH < gray_img->cols() && j + SUBSPACE_LENGTH < gray_img->rows()) {
+				print_ascii({ j, i }, { j + SUBSPACE_LENGTH, i + SUBSPACE_LENGTH }, rgb_img, *gray_img);
+			}
+
 		}
 	}
 
@@ -24,7 +28,7 @@ void RGBToAscii::print_ascii(cv::Point upper_left, cv::Point lower_right, const 
 	std::string ascii = as_string(mean_ascii);
 	double scale = compute_scale(ascii, subspace_width, subspace_height);
 
-	ascii_img->put_text(ascii, cv::Point(upper_left.x, lower_right.y), cv::FONT_HERSHEY_SIMPLEX, scale, color);
+	ascii_img->put_text(ascii, cv::Point(lower_right.y, upper_left.x), cv::FONT_HERSHEY_SIMPLEX, scale, color);
 }
 
 std::pair<char, cv::Vec3b> RGBToAscii::mean_values(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img) const {

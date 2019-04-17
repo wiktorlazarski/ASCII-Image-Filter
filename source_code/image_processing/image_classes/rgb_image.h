@@ -19,10 +19,10 @@ public:
 	RGBImage& operator=(RGBImage&&) = default;
 
 	//element access
-	pixel_type& pixel_at(const int& x, const int& y) {
+	pixel_type& pixel_at(int x, int y) {
 		return Image::pixel_at<pixel_type>(x, y);
 	}
-	const pixel_type& pixel_at(const int& x, const int& y) const {
+	const pixel_type& pixel_at(int x, int y) const {
 		return Image::pixel_at<pixel_type>(x, y);
 	}
 
