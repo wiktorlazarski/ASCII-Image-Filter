@@ -16,7 +16,7 @@ Source of image : http://picascii.com/
 
 3) **REFACTORIZATION OF DONE WORK - Multithread programming and class organization** - DONE
 
-4) Convert binary image to ASCII - Main Problem :
+4) Convert binary image to ASCII - Main Problem : - DONE
    * Think how to adjust sizes of glyps ?
    * How to generate text on image ?
    * How to convert ASCII which are numbered from 33 to 127 - I am not considering those ASCII values which represents particular keys
@@ -27,3 +27,8 @@ Source of image : http://picascii.com/
 6) Release 1.0
 
 7) Extending application to allow filtering videos in MP4 format in release 2.0
+
+## SUCCESS - Implementation of algorithm completed successfully <3 :D
+Below you can see one of firstly generated pictures
+
+![alt text](https://db3pap002files.storage.live.com/y4mzhPKUmdDUFdaZax9S7mea7Ch4oZyF0LjJvnmRTzZ0D55V7Bbds_FKdZVhoSOXeqSzm6N4GTYx7Pd_awG43tVkz4ejcVxe9cqcW1sI1Z04FJ4KwO9wSM-vP8foVpSfce1OgcHejWFFe_Z4w4VQ8-FrCCjm7MisELiVNGQk_KR5-wLkteJvqaIabrSchDjtBJjnVzz9QQGpTpPcH1jmwtvPQ/output.jpg?psid=1&width=450&height=830)
