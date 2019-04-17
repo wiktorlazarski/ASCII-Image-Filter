@@ -17,7 +17,7 @@ public:
 		std::unique_ptr<GrayscaleImage> gray_img(RGBToGrayscale::get_instance().convert(rgb_img));
 		ascii_img = std::make_unique<AsciiImage>(new AsciiImage(&rgb_img));
 		
-		print_ascii({ 20, 20 }, { 40, 40 }, rgb_img, *gray_img);
+		print_ascii({ 0, 0 }, { 8, 8 }, rgb_img, *gray_img);
 
 		return std::move(ascii_img);
 	}
@@ -40,34 +40,8 @@ private:
 	RGBToAscii& operator=(RGBToAscii&&) = delete;
 
 	//converter's support methods
-	void print_ascii(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img) const {
-		cv::Vec3b mean_col = {0, 0, 0};
-		int mean_val = 0;
-
-		int x_cnt = lower_right.x - upper_left.x;
-		int y_cnt = lower_right.y - upper_left.y;
-
-		//compute mean values
-		for (int i = 0; i < y_cnt; i++) {
-			for (int j = 0; j < x_cnt; j++) {
-				auto curr_col = rgb_img.pixel_at(i, j);
-				mean_col[0] += curr_col[0];
-				mean_col[1] += curr_col[1];
-				mean_col[2] += curr_col[2];
-
-				auto curr_val = gray_img.pixel_at(i, j);
-				mean_val += curr_val;
-			}
-		}
-
-		mean_col[0] /= (x_cnt + y_cnt);
-		mean_val /= (x_cnt + y_cnt);
-
-		char ascii = mean_val % 127 + 33;
-		std::stringstream ss;
-		ss << ascii;
-		double font_size = x_cnt > y_cnt ? y_cnt / x_cnt : x_cnt / y_cnt;
-		ascii_img->put_text(ss.str(), cv::Point(upper_left.x, lower_right.y), cv::FONT_HERSHEY_SIMPLEX, font_size, mean_col);
-	}
-
+	void print_ascii(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img) const;
+	std::pair<char, cv::Vec3b> mean_values(int x_cnt, int y_cnt, const RGBImage& rgb_img, const GrayscaleImage& gray_img) const;
+	std::string as_string(char c) const;
+	double compute_scale(const std::string& ascii, int subspace_width, int subspace_height) const;
 };
