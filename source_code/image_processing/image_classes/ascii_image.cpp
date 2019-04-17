@@ -6,8 +6,6 @@ AsciiImage::AsciiImage(int rows, int cols) : Image(rows + WATERMARK_SIZE, cols, 
 {
 	ppaint_background();
 
-	font_size = rows > cols ? rows / cols : cols / rows;
-	font_size /= 8;
 	put_text(WATERMARK, cv::Point(0, this->rows() - 5), cv::FONT_HERSHEY_COMPLEX, font_size, cv::Scalar(0, 0, 0));
 }
 

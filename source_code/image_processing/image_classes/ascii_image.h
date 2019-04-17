@@ -12,7 +12,7 @@ public:
 
 	//constructors
 	explicit AsciiImage(int rows, int cols);
-	explicit AsciiImage(const Image& img) : AsciiImage(img.rows(), img.cols()) 
+	explicit AsciiImage(const Image* img) : AsciiImage(img->rows(), img->cols())
 	{}
 	AsciiImage(const AsciiImage& img) = default;
 	AsciiImage(AsciiImage&& img) = default;
@@ -33,7 +33,7 @@ public:
 	virtual ~AsciiImage() = default;
 
 private:
-	double font_size;
+	const double font_size = 0.33;
 
 	void paint_background(int low_row, int high_row);
 	void ppaint_background();
