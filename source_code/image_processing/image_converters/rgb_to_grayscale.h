@@ -3,8 +3,8 @@
 #include <vector>
 
 #include "image_converter.h"
-#include "rgb_image.h"
-#include "grayscale_image.h"
+#include "../image_classes/rgb_image.h"
+#include "../image_classes/grayscale_image.h"
 
 class RGBToGrayscale final : public IImageConverter<RGBImage, GrayscaleImage>
 {

@@ -1,5 +1,5 @@
 #pragma once
-#include "image.h"
+#include "../image_classes/image.h"
 
 template<typename InputImage, typename OutputImage>
 class IImageConverter
