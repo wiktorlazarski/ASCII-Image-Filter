@@ -1,5 +1,3 @@
-#include "image_processing/image_converters/rgb_to_grayscale.h"
-#include "image_processing/image_classes/ascii_image.h"
 #include "image_processing/image_converters/rgb_to_ascii.h"
 
 int main(int argc, char* argv[])

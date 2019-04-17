@@ -1,11 +1,11 @@
+#include <future>
 #include "ascii_image.h"
 
 const char* AsciiImage::WATERMARK = "Created by ASCII filter";
 
-AsciiImage::AsciiImage(int rows, int cols) : Image(rows + WATERMARK_SIZE, cols, CV_8UC3)
+AsciiImage::AsciiImage(int rows, int cols) : Image(rows + WATERMARK_SIZE, cols, CV_8UC3), font_size(0.33)
 {
 	ppaint_background();
-
 	put_text(WATERMARK, cv::Point(0, this->rows() - 5), cv::FONT_HERSHEY_COMPLEX, font_size, cv::Scalar(0, 0, 0));
 }
 

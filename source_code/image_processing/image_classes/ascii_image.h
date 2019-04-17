@@ -1,10 +1,9 @@
 #pragma once
-#include <future>
 #include "image.h"
 
 class AsciiImage : public Image
 {
-	static const int WATERMARK_SIZE = 200;
+	static const int WATERMARK_SIZE = 50;
 	static const char* WATERMARK;
 
 public:
@@ -33,7 +32,7 @@ public:
 	virtual ~AsciiImage() = default;
 
 private:
-	const double font_size = 0.33;
+	const double font_size;
 
 	void paint_background(int low_row, int high_row);
 	void ppaint_background();
