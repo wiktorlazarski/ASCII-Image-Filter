@@ -27,7 +27,7 @@ void RGBToGrayscale::convert_pixels(GrayscaleImage* output, const RGBImage& rgb,
 }
 
 void RGBToGrayscale::pconvert(GrayscaleImage* output, const RGBImage& rgb) const {
-	static constexpr int GRAIN = 200;
+	static constexpr int GRAIN = 500;
 
 	std::vector<std::future<void>> pool;
 

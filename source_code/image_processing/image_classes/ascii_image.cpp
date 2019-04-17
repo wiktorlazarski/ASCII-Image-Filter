@@ -4,7 +4,6 @@ const char* AsciiImage::WATERMARK = "Created by ASCII filter";
 
 AsciiImage::AsciiImage(int rows, int cols) : Image(rows + WATERMARK_SIZE, cols, CV_8UC3)
 {
-	//paint_background(0, this->rows());
 	ppaint_background();
 
 	font_size = rows > cols ? rows / cols : cols / rows;
