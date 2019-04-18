@@ -6,17 +6,21 @@
 	std::unique_ptr<GrayscaleImage> gray_img(RGBToGrayscale::get_instance().convert(rgb_img));
 	ascii_img = std::make_unique<AsciiImage>(new AsciiImage(&rgb_img));
 
-	for (int i = 0; i < gray_img->cols(); i += SUBSPACE_LENGTH) {
-		for (int j = 0; j < gray_img->rows(); j += SUBSPACE_LENGTH) {
+	paint_image(rgb_img, *gray_img.get());
 
-			if (i + SUBSPACE_LENGTH < gray_img->cols() && j + SUBSPACE_LENGTH < gray_img->rows()) {
-				print_ascii({ j, i }, { j + SUBSPACE_LENGTH, i + SUBSPACE_LENGTH }, rgb_img, *gray_img);
+	return std::move(ascii_img);
+}
+
+void RGBToAscii::paint_image(const RGBImage& rgb_img, const GrayscaleImage& gray_img) const {
+	for (int i = 0; i < gray_img.cols(); i += SUBSPACE_LENGTH) {
+		for (int j = 0; j < gray_img.rows(); j += SUBSPACE_LENGTH) {
+
+			if (i + SUBSPACE_LENGTH < gray_img.cols() && j + SUBSPACE_LENGTH < gray_img.rows()) {
+				print_ascii({ j, i }, { j + SUBSPACE_LENGTH, i + SUBSPACE_LENGTH }, rgb_img, gray_img);
 			}
 
 		}
 	}
-
-	return std::move(ascii_img);
 }
 
 void RGBToAscii::print_ascii(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img) const {

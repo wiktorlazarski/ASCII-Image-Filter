@@ -34,6 +34,7 @@ private:
 	RGBToAscii& operator=(RGBToAscii&&) = delete;
 
 	//converter's support methods
+	void paint_image(const RGBImage& rgb_img, const GrayscaleImage& gray_img) const;
 	void print_ascii(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img) const;
 	std::pair<char, cv::Vec3b> mean_values(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img) const;
 	std::string as_string(char c) const;
