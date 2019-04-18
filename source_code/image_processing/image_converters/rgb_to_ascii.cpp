@@ -6,14 +6,34 @@
 	std::unique_ptr<GrayscaleImage> gray_img(RGBToGrayscale::get_instance().convert(rgb_img));
 	ascii_img = std::make_unique<AsciiImage>(new AsciiImage(&rgb_img));
 
-	paint_image(rgb_img, *gray_img.get());
+	ppaint_image(rgb_img, *gray_img.get());
 
 	return std::move(ascii_img);
 }
 
-void RGBToAscii::paint_image(const RGBImage& rgb_img, const GrayscaleImage& gray_img) const {
+void RGBToAscii::ppaint_image(const RGBImage& rgb_img, const GrayscaleImage& gray_img) const {
+	static constexpr int GRAIN = 500;
+
+	std::vector<std::future<void>> pool;
+
+	for (int i = 0; i < gray_img.rows(); i += GRAIN) {
+		if (i + GRAIN < gray_img.rows()) {
+			pool.push_back(std::async(std::launch::async, &RGBToAscii::paint_fragment, this, std::ref(rgb_img), std::ref(gray_img), i, i + GRAIN));
+		}
+		else {
+			pool.push_back(std::async(std::launch::async, &RGBToAscii::paint_fragment, this, std::ref(rgb_img), std::ref(gray_img), i, gray_img.rows()));
+		}
+	}
+
+	//wait untill all threads finish
+	for (uint i = 0; i < pool.size(); i++) {
+		pool[i].get();
+	}
+}
+
+void RGBToAscii::paint_fragment(const RGBImage& rgb_img, const GrayscaleImage& gray_img, int low_row, int high_row) const {
 	for (int i = 0; i < gray_img.cols(); i += SUBSPACE_LENGTH) {
-		for (int j = 0; j < gray_img.rows(); j += SUBSPACE_LENGTH) {
+		for (int j = low_row; j < high_row; j += SUBSPACE_LENGTH) {
 
 			if (i + SUBSPACE_LENGTH < gray_img.cols() && j + SUBSPACE_LENGTH < gray_img.rows()) {
 				print_ascii({ j, i }, { j + SUBSPACE_LENGTH, i + SUBSPACE_LENGTH }, rgb_img, gray_img);
