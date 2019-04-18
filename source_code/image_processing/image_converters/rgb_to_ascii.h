@@ -14,15 +14,15 @@ public:
 	}
 
 	//implementation of pure virtual method
-	[[nodiscard]] std::unique_ptr<AsciiImage> convert(const RGBImage& rgb_img) const override;
+	[[nodiscard]] std::unique_ptr<AsciiImage> convert(const RGBImage& rgb_img) override;
 
 	//destructor
 	~RGBToAscii() = default;
 
 private:
 
-	mutable std::mutex m_mutex;
-	mutable std::unique_ptr<AsciiImage> ascii_img;
+	std::mutex m_mutex;
+	std::unique_ptr<AsciiImage> ascii_img;
 
 	//constructors
 	RGBToAscii() = default;
@@ -34,10 +34,10 @@ private:
 	RGBToAscii& operator=(RGBToAscii&&) = delete;
 
 	//converter's support methods
-	void ppaint_image(const RGBImage& rgb_img, const GrayscaleImage& gray_img) const;
-	void paint_fragment(const RGBImage& rgb_img, const GrayscaleImage& gray_img, int low_row, int high_row) const;
-	void print_ascii(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img) const;
-	std::pair<char, cv::Vec3b> mean_values(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img) const;
-	std::string as_string(char c) const;
-	double compute_scale(const std::string& ascii, int subspace_width, int subspace_height) const;
+	void ppaint_image(const RGBImage& rgb_img, const GrayscaleImage& gray_img);
+	void paint_fragment(const RGBImage& rgb_img, const GrayscaleImage& gray_img, int low_row, int high_row);
+	void print_ascii(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img);
+	std::pair<char, cv::Vec3b> mean_values(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img);
+	std::string as_string(char c);
+	double compute_scale(const std::string& ascii, int subspace_width, int subspace_height);
 };

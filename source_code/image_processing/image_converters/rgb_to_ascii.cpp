@@ -1,6 +1,6 @@
 #include "rgb_to_ascii.h"
 
-[[nodiscard]] std::unique_ptr<AsciiImage> RGBToAscii::convert(const RGBImage& rgb_img) const {
+[[nodiscard]] std::unique_ptr<AsciiImage> RGBToAscii::convert(const RGBImage& rgb_img) {
 	std::lock_guard<std::mutex> lock(m_mutex);
 
 	std::unique_ptr<GrayscaleImage> gray_img(RGBToGrayscale::get_instance().convert(rgb_img));
@@ -11,7 +11,7 @@
 	return std::move(ascii_img);
 }
 
-void RGBToAscii::ppaint_image(const RGBImage& rgb_img, const GrayscaleImage& gray_img) const {
+void RGBToAscii::ppaint_image(const RGBImage& rgb_img, const GrayscaleImage& gray_img) {
 	static constexpr int GRAIN = 500;
 
 	std::vector<std::future<void>> pool;
@@ -31,7 +31,7 @@ void RGBToAscii::ppaint_image(const RGBImage& rgb_img, const GrayscaleImage& gra
 	}
 }
 
-void RGBToAscii::paint_fragment(const RGBImage& rgb_img, const GrayscaleImage& gray_img, int low_row, int high_row) const {
+void RGBToAscii::paint_fragment(const RGBImage& rgb_img, const GrayscaleImage& gray_img, int low_row, int high_row) {
 	for (int i = 0; i < gray_img.cols(); i += SUBSPACE_LENGTH) {
 		for (int j = low_row; j < high_row; j += SUBSPACE_LENGTH) {
 
@@ -43,7 +43,7 @@ void RGBToAscii::paint_fragment(const RGBImage& rgb_img, const GrayscaleImage& g
 	}
 }
 
-void RGBToAscii::print_ascii(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img) const {
+void RGBToAscii::print_ascii(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img) {
 
 	int subspace_width = lower_right.x - upper_left.x;
 	int subspace_height = lower_right.y - upper_left.y;
@@ -55,7 +55,7 @@ void RGBToAscii::print_ascii(cv::Point upper_left, cv::Point lower_right, const 
 	ascii_img->put_text(ascii, cv::Point(lower_right.y, upper_left.x), cv::FONT_HERSHEY_SIMPLEX, scale, color);
 }
 
-std::pair<char, cv::Vec3b> RGBToAscii::mean_values(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img) const {
+std::pair<char, cv::Vec3b> RGBToAscii::mean_values(cv::Point upper_left, cv::Point lower_right, const RGBImage& rgb_img, const GrayscaleImage& gray_img) {
 	int mean_red = 0;
 	int mean_blue = 0;
 	int mean_green = 0;
@@ -89,14 +89,14 @@ std::pair<char, cv::Vec3b> RGBToAscii::mean_values(cv::Point upper_left, cv::Poi
 	return std::make_pair<>(mean_ascii, mean_col);
 }
 
-std::string RGBToAscii::as_string(char c) const {
+std::string RGBToAscii::as_string(char c) {
 	std::stringstream ss;
 	ss << c;
 	std::string ascii = ss.str();
 	return ascii;
 }
 
-double RGBToAscii::compute_scale(const std::string& ascii, int subspace_width, int subspace_height) const {
+double RGBToAscii::compute_scale(const std::string& ascii, int subspace_width, int subspace_height) {
 
 	auto size = cv::getTextSize(ascii, cv::FONT_HERSHEY_SIMPLEX, 1, 1, 0);
 

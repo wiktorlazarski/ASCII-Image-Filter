@@ -15,7 +15,7 @@ public:
 	}
 
 	//implementation of pure virtual method
-	[[nodiscard]] std::unique_ptr<GrayscaleImage> convert(const RGBImage& rgb_img) const override;
+	[[nodiscard]] std::unique_ptr<GrayscaleImage> convert(const RGBImage& rgb_img) override;
 
 	//destructor
 	~RGBToGrayscale() = default;
@@ -31,6 +31,6 @@ private:
 	RGBToGrayscale& operator=(RGBToGrayscale&&) = delete;
 
 	//parallel conversion
-	void convert_pixels(GrayscaleImage* output, const RGBImage& rgb, int low_row, int high_row) const;
-	void pconvert(GrayscaleImage* output, const RGBImage& rgb) const;
+	void convert_pixels(GrayscaleImage* output, const RGBImage& rgb, int low_row, int high_row);
+	void pconvert(GrayscaleImage* output, const RGBImage& rgb);
 };
