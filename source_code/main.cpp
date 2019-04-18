@@ -4,8 +4,11 @@
 int main(int argc, char* argv[])
 {
 	try {
+		if (argc < 3) {
+			throw std::invalid_argument("Input or output not specified");
+		}
 		const RGBImage input_img(argv[1]);
-		ConsoleLogger::get_instance().log("Image file load successfully\n");
+		ConsoleLogger::get_instance().log("Image file " + std::string(argv[1]) + " load successfully\n");
 
 		bool conversion_complete = false;
 		std::thread t([&conversion_complete]() {
