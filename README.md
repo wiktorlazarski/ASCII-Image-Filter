@@ -38,3 +38,6 @@ Application was writen in Microsoft Visual Studio 17, using _C++17_ standard and
 
 #### Final remark
 I am well awere that some functionalities which I implemented are already build-in OpenCV library (like for example converting RGB image to grayscale image). However, due to a fact that it is my first project involving image processing I wanted to practise and implement them by myself. Also what I wanted to practise is multithread programming in _Modern C++_.
+
+Please send me info about any bug you spotted.</br>
+email : wjlazarski@gmail.com
