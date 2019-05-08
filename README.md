@@ -1,6 +1,6 @@
 # ASCII Image Filter
 
-The ASCII Image Filter is a console application that allows user to convert any given image, in _jpg_ format, to ASCII image, seved also in _jpg_ format. A path to input image should be given as first command line parameter and saving path of output image, within the name of created image included, should be passed as second command line parameter.
+The ASCII Image Filter is a console application that allows user to convert any given image, in _jpg_ format, to ASCII image, saved also in _jpg_ format. A path to input image should be given as first command line parameter and saving path of output image, within the name of created image included, should be passed as second command line parameter.
 
 Application was writen in Microsoft Visual Studio 17, using _C++17_ standard and _OpenCV_ library.
 
