@@ -1,4 +1,4 @@
-![alt text](https://db3pap002files.storage.live.com/y4mMVAOj32PMISM8hcRwwedFny1ArE4B-6-5M1oSApx7yzMD8HDSBu_eiQMOmBPblPp9Vc06crla2U4k_YaxxGLtvylg51t_3agt09XnIfWRAU4QdIRukU1vbnaklFIkdm_jmO4EmYTQuAyhjR3-FZ5e-fsMSZ2fwcuh0ZLLEgXzoa6BjMxvAFCNCHpGIl36qjCtLCX7iouH5wVOeYr67s5uw/intro.jpg?psid=1&width=1207&height=623)
+![alt text](https://db3pap002files.storage.live.com/y4mGO7m_UhPME1N6-CRY9qZILxpWpNLI6Ssu3UwX7qTRwnlVNTJba5Pb1Ar84v3uLnySLX-4zrnKPQRSn2UH8VrzQjFKW86MEBi2jnuIR69udF1ZrRswIEcR7ZfsYyZxjNgW150MLGLwBMOfZ5Ff6nCybH-n3Ohcqsq1ugvU3v5xDRBXOYCQ4i_RVsY4ykNZlMK2HZHdAWajDx8GQN0_ZK_QA/intro.jpg?psid=1&width=1024&height=429)
 
 The ASCII Image Filter is a console application that allows user to convert any given image, in _jpg_ format, to ASCII image, saved also in _jpg_ format. A path to input image should be given as first command line parameter and saving path of output image, within the name of created image included, should be passed as second command line parameter.
 
